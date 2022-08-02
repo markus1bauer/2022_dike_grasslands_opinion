@@ -7,7 +7,7 @@ library(here)
 library(tidyverse)
 library(EML)
 library(emld)
-#remotes::install_github("ropenscilabs/emldown", build = F)
+#remotes::install_github("ropenscilabs/emldown", build = FALSE)
 library(emldown)
 #remotes::install_github("EDIorg/EMLassemblyline")
 library(EMLassemblyline)
@@ -18,534 +18,20 @@ setwd(here("data", "raw"))
 
 
 
-#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-# A Collect metadata ##############################################################################
-#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# A Collect metadata ###########################################################
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
-### 1 Methods and units #####################################################################################
+### 1 Methods and units (not used) #############################################
 
 #methods_file <- here("data", "text", "methods.odt")
-methods <- set_methods(methods_file)
+#methods <- set_methods(methods_file)
 
-EMLassemblyline::view_unit_dictionary() # List of standard units, which should be used in metadata file
+# List of standard units, which should be used in metadata file
+#EMLassemblyline::view_unit_dictionary()
 
-custom_units <- bind_rows(
-  data.frame(id = "milligramPerDezigram", 
-             unitType = "massPerMass", 
-             parentSI = "gramPerGram", 
-             multiplierToSI = 0.00001, 
-             description = "milligram of element per 100 gram soil"),
-  data.frame(id = "millimeterSquaredPerMilligram", 
-             unitType = "specificArea", 
-             parentSI = "meterPerGram", 
-             multiplierToSI = 1, 
-             description = "square millimeters per milligram")
-  )
-
-unitList <- set_unitList(custom_units)
-
-
-### 2 Raw data #####################################################################################
-
-### a data_raw_species  -------------------------------------------------------------------------------------------
-attributes <- read_csv("data_raw_species_metadata.csv") %>%
-  select(-type)
-col_classes <- read_csv("data_raw_species_metadata.csv") %>%
-  select(type)
-
-attributeList_raw_species <- set_attributes(attributes, 
-                                            col_classes = col_classes
-                                          )
-
-#physical_raw_species <- set_physical("data_raw_species.csv")
-
-### b data_raw_traits  -------------------------------------------------------------------------------------------
-setwd(here("data/raw"))
-attributes <- read_csv("data_raw_traits_metadata.csv") %>%
-  select(-type, -factor)
-
-col_classes <- read_csv("data_raw_traits_metadata.csv") %>%
-  select(type)
-
-
-group <- c(
-  top_grass = "taller grass species",
-  sub_grass = "smaller grass species",
-  legume = "species of the family Fabaceae",
-  herb = "herbal species"
-)
-legal <- c(
-  BG = "besonders geschuetzt",
-  SG = "streng geschuetzt"
-)
-rlg <- c(
-  V = "warning list",
-  "3" = "vulnerable",
-  "2" = "endangered",
-  "1" = "critically endangered"
-)
-rlb <- c(
-  V = "warning list",
-  "3" = "vulnerable",
-  "2" = "endangered",
-  "1" = "critically endangered"
-)
-neophyte <- c(
-  yes = "species is",
-  no = "species is not"
-)
-fchange <- c(
-  "1" = "changing moist conditions",
-  "2" = "strong chaning moist conditions"
-)
-targetHerb <- c(
-  yes = "species is",
-  no = "species is not"
-)
-targetGrass <- c(
-  yes = "species is",
-  no = "species is not"
-)
-ffh6510 <- c(
-  yes = "species is",
-  no = "species is not"
-)
-ffh6210 <- c(
-  yes = "species is",
-  no = "species is not"
-)
-nitrogenIndicator <- c(
-  yes = "species is",
-  no = "species is not"
-)
-grazingIndicator <- c(
-  yes = "species is",
-  no = "species is not"
-)
-ruderalIndicator <- c(
-  yes = "species is",
-  no = "species is not"
-)
-
-factors <- bind_rows(
-  data.frame(
-    attributeName = "group",
-    code = names(group),
-    definition = unname(group)
-  ),
-  data.frame(
-    attributeName = "legal",
-    code = names(legal),
-    definition = unname(legal)
-  ),
-  data.frame(
-    attributeName = "rlg",
-    code = names(rlg),
-    definition = unname(rlg)
-  ),
-  data.frame(
-    attributeName = "rlb",
-    code = names(rlb),
-    definition = unname(rlb)
-  ),
-  data.frame(
-    attributeName = "neophyte",
-    code = names(neophyte),
-    definition = unname(neophyte)
-  ),
-  data.frame(
-    attributeName = "fchange",
-    code = names(fchange),
-    definition = unname(fchange)
-  ),
-  data.frame(
-    attributeName = "targetHerb",
-    code = names(targetHerb),
-    definition = unname(targetHerb)
-  ),
-  data.frame(
-    attributeName = "targetGrass",
-    code = names(targetGrass),
-    definition = unname(targetGrass)
-  ),
-  data.frame(
-    attributeName = "ff6510",
-    code = names(ffh6510),
-    definition = unname(ffh6510)
-  ),
-  data.frame(
-    attributeName = "ffh6210",
-    code = names(ffh6210),
-    definition = unname(ffh6210)
-  ),
-  data.frame(
-    attributeName = "nitrogenIndicator",
-    code = names(nitrogenIndicator),
-    definition = unname(nitrogenIndicator)
-  ),
-  data.frame(
-    attributeName = "grazingIndicator",
-    code = names(grazingIndicator),
-    definition = unname(grazingIndicator)
-  ),
-  data.frame(
-    attributeName = "ruderalIndicator",
-    code = names(ruderalIndicator),
-    definition = unname(ruderalIndicator)
-    )
-  )
-
-
-attributeList_raw_traits <- set_attributes(attributes, 
-                                        factors, 
-                                        col_classes = col_classes
-                                        )
-physical_raw_traits <- set_physical("data_raw_traits.csv")
-
-### c data_raw_sites  -------------------------------------------------------------------------------------------
-setwd(here("data/raw"))
-attributes <- read_csv("data_raw_sites_metadata.csv") %>%
-  select(-type, -factor)
-
-col_classes <- read_csv("data_raw_sites_metadata.csv") %>%
-  select(type)
-
-
-side <- c(
-  water = "water side of the dike",
-  land = "land side of the dike"
-)
-exposition <- c(
-  north = "north exposition",
-  south = "south exposition",
-  east = "east exposition",
-  west = "west exposition"
-)
-
-factors <- bind_rows(
-  data.frame(
-    attributeName = "side",
-    code = names(side),
-    definition = unname(side)
-  ),
-  data.frame(
-    attributeName = "exposition",
-    code = names(exposition),
-    definition = unname(exposition)
-  )
-  )
-
-attributeList_raw_sites <- set_attributes(attributes, 
-                                            factors, 
-                                            col_classes = col_classes
-                                          )
-
-
-physical_raw_sites <- set_physical("data_raw_sites.csv")
-
-### 3 Processed data #####################################################################################
-
-### a data_processed_species  -------------------------------------------------------------------------------------------
-setwd(here("data/processed"))
-attributes <- read_csv("data_processed_species_metadata.csv") %>%
-  select(-type, -factor)
-
-attributeList_processed_species <- set_attributes(attributes, 
-                                                  col_classes = c("character", 
-                                                                  "numeric", 
-                                                                  "numeric")
-                                                  )
-
-physical_processed_species <- set_physical("data_processed_species.csv")
-
-
-### b data_processed_traits  -------------------------------------------------------------------------------------------
-setwd(here("data/processed"))
-attributes <- read_csv("data_processed_traits_metadata.csv") %>%
-  select(-type, -factor)
-
-group <- c(
-  top_grass = "taller grass species",
-  sub_grass = "smaller grass species",
-  legume = "species of the family Fabaceae",
-  herb = "herbal species"
-)
-legal <- c(
-  BG = "besonders geschuetzt",
-  SG = "streng geschuetzt"
-)
-rlg <- c(
-  V = "warning list",
-  "3" = "vulnerable",
-  "2" = "endangered",
-  "1" = "critically endangered"
-)
-rlb <- c(
-  V = "warning list",
-  "3" = "vulnerable",
-  "2" = "endangered",
-  "1" = "critically endangered"
-)
-neophyte <- c(
-  yes = "species is",
-  no = "species is not"
-)
-fchange <- c(
-  "1" = "changing moist conditions",
-  "2" = "strong chaning moist conditions"
-)
-targetHerb <- c(
-  yes = "species is",
-  no = "species is not"
-)
-targetGrass <- c(
-  yes = "species is",
-  no = "species is not"
-)
-targetArrhenatherion <- c(
-  yes = "species is",
-  no = "species is not"
-)
-ffh6510 <- c(
-  yes = "species is",
-  no = "species is not"
-)
-ffh6210 <- c(
-  yes = "species is",
-  no = "species is not"
-)
-table30 <- c(
-  yes = "species is",
-  no = "species is not"
-)
-table33 <- c(
-  yes = "species is",
-  no = "species is not"
-)
-table34 <- c(
-  yes = "species is",
-  no = "species is not"
-)
-nitrogenIndicator <- c(
-  yes = "species is",
-  no = "species is not"
-)
-grazingIndicator <- c(
-  yes = "species is",
-  no = "species is not"
-)
-ruderalIndicator <- c(
-  yes = "species is",
-  no = "species is not"
-)
-others <- c(
-  yes = "species is",
-  no = "species is not"
-)
-
-factors <- bind_rows(
-  data.frame(
-    attributeName = "group",
-    code = names(group),
-    definition = unname(group)
-  ),
-  data.frame(
-    attributeName = "legal",
-    code = names(legal),
-    definition = unname(legal)
-  ),
-  data.frame(
-    attributeName = "rlg",
-    code = names(rlg),
-    definition = unname(rlg)
-  ),
-  data.frame(
-    attributeName = "rlb",
-    code = names(rlb),
-    definition = unname(rlb)
-  ),
-  data.frame(
-    attributeName = "neophyte",
-    code = names(neophyte),
-    definition = unname(neophyte)
-  ),
-  data.frame(
-    attributeName = "fchange",
-    code = names(fchange),
-    definition = unname(fchange)
-  ),
-  data.frame(
-    attributeName = "targetHerb",
-    code = names(targetHerb),
-    definition = unname(targetHerb)
-  ),
-  data.frame(
-    attributeName = "targetGrass",
-    code = names(targetGrass),
-    definition = unname(targetGrass)
-  ),
-  data.frame(
-    attributeName = "targetArrhenatherion",
-    code = names(targetArrhenatherion),
-    definition = unname(targetArrhenatherion)
-  ),
-  data.frame(
-    attributeName = "ff6510",
-    code = names(ffh6510),
-    definition = unname(ffh6510)
-  ),
-  data.frame(
-    attributeName = "ffh6210",
-    code = names(ffh6210),
-    definition = unname(ffh6210)
-  ),
-  data.frame(
-    attributeName = "table30",
-    code = names(table30),
-    definition = unname(table30)
-  ),
-  data.frame(
-    attributeName = "table33",
-    code = names(table33),
-    definition = unname(table33)
-  ),
-  data.frame(
-    attributeName = "table34",
-    code = names(table34),
-    definition = unname(table34)
-  ),
-  data.frame(
-    attributeName = "nitrogenIndicator",
-    code = names(nitrogenIndicator),
-    definition = unname(nitrogenIndicator)
-  ),
-  data.frame(
-    attributeName = "grazingIndicator",
-    code = names(grazingIndicator),
-    definition = unname(grazingIndicator)
-  ),
-  data.frame(
-    attributeName = "ruderalIndicator",
-    code = names(ruderalIndicator),
-    definition = unname(ruderalIndicator)
-  ),
-  data.frame(
-    attributeName = "others",
-    code = names(others),
-    definition = unname(others)
-  )
-)
-
-attributeList_raw_traits <- set_attributes(attributes, 
-                                           factors, 
-                                           col_classes = c("character",
-                                                           "character",
-                                                           "character",
-                                                           "character",
-                                                           "factor",
-                                                           "factor",
-                                                           "factor",
-                                                           "factor",
-                                                           "factor",
-                                                           "numeric",
-                                                           "numeric",
-                                                           "numeric",
-                                                           "numeric",
-                                                           "factor",
-                                                           "numeric",
-                                                           "numeric",
-                                                           "factor",
-                                                           "factor",
-                                                           "factor",
-                                                           "factor",
-                                                           "factor",
-                                                           "factor",
-                                                           "factor",
-                                                           "factor",
-                                                           "factor",
-                                                           "factor",
-                                                           "factor",
-                                                           "factor"
-                                           )
-)
-
-physical_processed_traits <- set_physical("data_raw_traits.csv")
-
-
-### c data_processed_sites  -------------------------------------------------------------------------------------------
-attributes <- read_csv("data_processed_sites_metadata.csv")
-
-position <- c(
-  m = "middle part of the slope",
-  u = "upper part of the slope",
-  l = "lower part of the slope"
-)
-
-factors <- bind_rows(
-  data.frame(
-    attributeName = "position",
-    code = names(position),
-    definition = unname(position)
-  )
-)
-
-attributeList_processed_sites <- set_attributes(attributes, 
-                                      factors, 
-                                      col_classes = c("character", 
-                                                      "Date", 
-                                                      "factor", 
-                                                      "character",
-                                                      "numeric", 
-                                                      "numeric")
-)
-
-physical_processed_sites <- set_physical("data_raw_sites.csv")
-
-
-### 4 Put data table together #####################################################################################
-
-dataTable <- list(
-  list(
-    entityName = "data_raw_species.csv",
-    entityDescription = "raw species abundances",
-    #physical = physical_raw_species,
-    attributeList = attributeList_raw_species
-  ),
-  list(
-    entityName = "data_raw_traits.csv",
-    entityDescription = "raw plant trait list",
-    #physical = physical_raw_traits,
-    attributeList = attributeList_raw_traits
-  ),
-  list(
-    entityName = "data_raw_sites.csv",
-    entityDescription = "environmental raw data of the sites",
-    #physical = physical_raw_sites,
-    attributeList = attributeList_raw_sites
-  ),
-  list(
-    entityName = "data_processed_species.csv",
-    entityDescription = "processed species abundances",
-    #physical = physical_processed_species,
-    attributeList = attributeList_processed_species
-  )#,
-  #list(
-    #entityName = "data_processed_traits.csv",
-    #entityDescription = "processed plant trait list",
-    #physical = physical_processed_traits,
-    #attributeList = attributeList_processed_traits
-  #),
-  #list(
-    #entityName = "data_processed_sites.csv",
-    #entityDescription = "environmental processed data of the sites",
-    #physical = physical_processed_sites,
-    #attributeList = attributeList_processed_sites
-  #)
-)
-
-
-### 5 Contact #####################################################################################
+### 2 Contact #################################################################
 
 address <- list(
   deliveryPoint = "Emil-Ramann-Strasse 6",
@@ -556,13 +42,13 @@ address <- list(
 
 creator <- eml$creator(
   individualName = eml$individualName(
-    givenName = "Markus", 
+    givenName = "Markus",
     surName = "Bauer"
   ),
   positionName = "PhD student",
   organizationName = "Technical University of Munich",
   address = address,
-  electronicMailAddress = "markusbauer@mailbox.org",
+  electronicMailAddress = "markus1.bauer@tum.de",
   phone = "0049-152-56391781",
   id = "https://orcid.org/0000-0001-5372-4174"
 )
@@ -570,28 +56,39 @@ creator <- eml$creator(
 associatedParty <- list(
   eml$associatedParty(
     individualName = eml$individualName(
-      givenName = "Jakob", 
-      surName = "Huber"
+      givenName = "Leonardo",
+      surName = "Teixeira"
     ),
     role = "Researcher",
     organizationName = "Technical University of Munich",
-    electronicMailAddress = "jakob.huber@posteo.de"
+    electronicMailAddress = "leonardo.teixeira@tum.de",
+    id = "https://orcid.org/0000-0001-7443-087X"
   ),
   eml$associatedParty(
     individualName = eml$individualName(
-      givenName = "Johannes", 
+      givenName = "Michaela",
+      surName = "Moosner"
+    ),
+    role = "Research assistant",
+    organizationName = "Technical University of Munich",
+    electronicMailAddress = "michaela.moosner@tum.de",
+    id = "https://orcid.org/0000-0002-7340-9363"
+  ),
+  eml$associatedParty(
+    individualName = eml$individualName(
+      givenName = "Johannes",
       surName = "Kollmann"
     ),
     role = "Professor",
     organizationName = "Technical University of Munich",
     address = address,
-    electronicMailAddress = "jkollmann@wzw.tum.de",
+    electronicMailAddress = "johannes.kollmann@tum.de",
     phone = "0049-8161-714144",
     id = "https://orcid.org/0000-0002-4990-3636"
   )
 )
 
-contact <- 
+contact <-
   list(
     individualName = creator$individualName,
     electronicMailAddress = creator$electronicMailAddress,
@@ -601,28 +98,28 @@ contact <-
   )
 
 
-### 6 Temporal and spatial coverage #####################################################################################
+### 6 Temporal and spatial coverage ###########################################
 
 geographicDescription <- "Danube dikes near Deggendorf"
 
 coverage <- set_coverage(
-  begin = "2017-06-01", end = "2021-07-31",
+  begin = "2018-06-01", end = "2021-07-31",
   sci_names = list(list(
     Subdivision = "Spermatophytina"
   )),
   geographicDescription = geographicDescription,
-  west = 12.58996, east = 13.1162,
-  north = 48.90389, south = 48.67502,
-  altitudeMin = 309, altitudeMaximum = 315,
+  west = 12.87705, east = 12.89247,
+  north = 48.84055, south = 48.83830,
+  altitudeMin = 313, altitudeMaximum = 315,
   altitudeUnits = "meter"
 )
 
 
-### 7 Description #####################################################################################
+### 7 Description #############################################################
 
-pubDate = "2022"
+pubDate <- "2022"
 
-title = "Danube old dikes"
+title <- "Opinion paper: multifunctionality of dike grasslands"
 
 abstract <- "Not written yet"
 
@@ -630,14 +127,17 @@ keywordSet <- list(
   list(
     keywordThesaurus = "LTER controlled vocabulary",
     keyword = list("rivers",
-                   "vegetation dynamics",
-                   "restoration")
+                   "restoration",
+                   "grasslands",
+                   "specis richness",
+                   "biodiversity",
+                   "ecosystem properties")
   ),
   list(
     keywordThesaurus = "own vocabulary",
-    keyword = list("beta diversity",
-                   "temperate grassland",
-                   "dike")
+    keyword = list("temperate grassland",
+                   "river dikes",
+                   "multifunctionality")
   )
 )
 
@@ -645,9 +145,9 @@ intellectualRights <- "CC-BY-4.0: https://creativecommons.org/licenses/by/4.0/de
 
 
 
-#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-# B finalize EML ##############################################################################
-#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# B finalize EML ##############################################################
+#++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
 dataset <- list(
@@ -656,15 +156,12 @@ dataset <- list(
   creator = creator,
   associatedParty = associatedParty,
   intellectualRights = intellectualRights,
-  abstract = abstract,
+  #abstract = abstract, #(not used)
   keywordSet = keywordSet,
   coverage = coverage,
-  contact = contact,
-  methods = methods,
-  dataTable = dataTable,
-  additonalMetadata = list(metadata = list(
-    unitList = unitList
-  ))
+  contact = contact
+  #methods = methods, #(not used)
+  #additonalMetadata = list(metadata = list(unitList = unitList)) #(not used)
   )
 
 eml <- list(
@@ -673,9 +170,8 @@ eml <- list(
   dataset = dataset
   )
 
-setwd(here())
-write_eml(eml, "METADATA.xml")
-eml_validate("METADATA.xml")
+write_eml(eml, here("METADATA.xml"))
+eml_validate(here("METADATA.xml"))
 
-render_eml("METADATA.xml", open = T, outfile = "METADATA.html", publish_mode = F)
-
+render_eml(here("METADATA.xml"), open = TRUE,
+           outfile = "METADATA.html", publish_mode = FALSE)

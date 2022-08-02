@@ -11,9 +11,8 @@ library(tidyverse)
 
 ### Start ###
 #installr::updateR(browse_news = F, install_R = T, copy_packages = T, copy_Rprofile.site = T, keep_old_packages = T, update_packages = T, start_new_R = F, quit_R = T, print_R_versions = T, GUI = F)
-#sessionInfo()
-checklist::setup_source()
-checklist::check_source()
+#checklist::setup_source(here())
+#checklist::check_source(here())
 renv::status()
 #renv::snapshot()
 rm(list = ls())
@@ -27,7 +26,7 @@ setwd(here("data", "raw"))
 
 
 sites <- read_csv("data_raw_sites.csv", col_names = TRUE, na = c("na", "NA"),
-                  col_types = 
+                  col_types =
                     cols(
                       .default = "?"
                     ))
@@ -52,5 +51,3 @@ sites <- sites %>%
 
 
 write_csv(sites, here("data", "processed", "data_processed_sites.csv"))
-
-

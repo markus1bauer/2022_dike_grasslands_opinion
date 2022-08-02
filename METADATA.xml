@@ -1,34 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<eml:eml xmlns:eml="https://eml.ecoinformatics.org/eml-2.2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:stmml="http://www.xml-cml.org/schema/stmml-1.2" packageId="972a234e-68a3-478c-bd5a-5569da0c48d4" system="uuid" xsi:schemaLocation="https://eml.ecoinformatics.org/eml-2.2.0 https://eml.ecoinformatics.org/eml-2.2.0/eml.xsd">
+<eml:eml xmlns:eml="https://eml.ecoinformatics.org/eml-2.2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:stmml="http://www.xml-cml.org/schema/stmml-1.2" packageId="eba097b7-8966-490f-8f75-a1d5e4ac3c64" system="uuid" xsi:schemaLocation="https://eml.ecoinformatics.org/eml-2.2.0 https://eml.ecoinformatics.org/eml-2.2.0/eml.xsd">
   <dataset>
-    <title>Danube dike experiment</title>
-    <creator>
+    <title>Opinion paper: multifunctionality of dike grasslands</title>
+    <creator id="https://orcid.org/0000-0001-5372-4174">
       <individualName>
         <givenName>Markus</givenName>
         <surName>Bauer</surName>
       </individualName>
-      <electronicMailAddress>markusbauer@mailbox.org</electronicMailAddress>
+      <organizationName>Technical University of Munich</organizationName>
+      <positionName>PhD student</positionName>
+      <address>
+        <deliveryPoint>Emil-Ramann-Strasse 6</deliveryPoint>
+        <city>Freising</city>
+        <administrativeArea>Bayern</administrativeArea>
+        <postalCode>85354</postalCode>
+        <country>Germany</country>
+      </address>
+      <phone>0049-152-56391781</phone>
+      <electronicMailAddress>markus1.bauer@tum.de</electronicMailAddress>
     </creator>
+    <associatedParty id="https://orcid.org/0000-0001-7443-087X">
+      <individualName>
+        <givenName>Leonardo</givenName>
+        <surName>Teixeira</surName>
+      </individualName>
+      <organizationName>Technical University of Munich</organizationName>
+      <electronicMailAddress>leonardo.teixeira@tum.de</electronicMailAddress>
+      <role>Researcher</role>
+    </associatedParty>
+    <associatedParty id="https://orcid.org/0000-0002-7340-9363">
+      <individualName>
+        <givenName>Michaela</givenName>
+        <surName>Moosner</surName>
+      </individualName>
+      <organizationName>Technical University of Munich</organizationName>
+      <electronicMailAddress>michaela.moosner@tum.de</electronicMailAddress>
+      <role>Research assistant</role>
+    </associatedParty>
+    <associatedParty id="https://orcid.org/0000-0002-4990-3636">
+      <individualName>
+        <givenName>Johannes</givenName>
+        <surName>Kollmann</surName>
+      </individualName>
+      <organizationName>Technical University of Munich</organizationName>
+      <address>
+        <deliveryPoint>Emil-Ramann-Strasse 6</deliveryPoint>
+        <city>Freising</city>
+        <administrativeArea>Bayern</administrativeArea>
+        <postalCode>85354</postalCode>
+        <country>Germany</country>
+      </address>
+      <phone>0049-8161-714144</phone>
+      <electronicMailAddress>johannes.kollmann@tum.de</electronicMailAddress>
+      <role>Professor</role>
+    </associatedParty>
     <pubDate>2022</pubDate>
-    <language>English</language>
-    <abstract>Not written yet</abstract>
     <keywordSet>
       <keyword>rivers</keyword>
-      <keyword>vegetation dynamics</keyword>
       <keyword>restoration</keyword>
+      <keyword>grasslands</keyword>
+      <keyword>specis richness</keyword>
+      <keyword>biodiversity</keyword>
+      <keyword>ecosystem properties</keyword>
       <keywordThesaurus>LTER controlled vocabulary</keywordThesaurus>
     </keywordSet>
-    <intellectualRights>CC BY 4.0</intellectualRights>
+    <keywordSet>
+      <keyword>temperate grassland</keyword>
+      <keyword>river dikes</keyword>
+      <keyword>multifunctionality</keyword>
+      <keywordThesaurus>own vocabulary</keywordThesaurus>
+    </keywordSet>
+    <intellectualRights>CC-BY-4.0: https://creativecommons.org/licenses/by/4.0/deed.en</intellectualRights>
     <coverage>
       <geographicCoverage>
         <geographicDescription>Danube dikes near Deggendorf</geographicDescription>
         <boundingCoordinates>
-          <westBoundingCoordinate>12.59</westBoundingCoordinate>
-          <eastBoundingCoordinate>13.1162</eastBoundingCoordinate>
-          <northBoundingCoordinate>48.9039</northBoundingCoordinate>
-          <southBoundingCoordinate>48.675</southBoundingCoordinate>
+          <westBoundingCoordinate>12.8771</westBoundingCoordinate>
+          <eastBoundingCoordinate>12.8925</eastBoundingCoordinate>
+          <northBoundingCoordinate>48.8406</northBoundingCoordinate>
+          <southBoundingCoordinate>48.8383</southBoundingCoordinate>
           <boundingAltitudes>
-            <altitudeMinimum>309</altitudeMinimum>
+            <altitudeMinimum>313</altitudeMinimum>
             <altitudeMaximum>315</altitudeMaximum>
             <altitudeUnits>meter</altitudeUnits>
           </boundingAltitudes>
@@ -46,16 +98,8 @@
       </temporalCoverage>
       <taxonomicCoverage>
         <taxonomicClassification>
-          <taxonRankName>Kingdom</taxonRankName>
-          <taxonRankValue>Plantae</taxonRankValue>
-          <taxonomicClassification>
-            <taxonRankName>Division</taxonRankName>
-            <taxonRankValue>Tracheophyta</taxonRankValue>
-            <taxonomicClassification>
-              <taxonRankName>Subdivision</taxonRankName>
-              <taxonRankValue>Spermatophytina</taxonRankValue>
-            </taxonomicClassification>
-          </taxonomicClassification>
+          <taxonRankName>Subdivision</taxonRankName>
+          <taxonRankValue>Spermatophytina</taxonRankValue>
         </taxonomicClassification>
       </taxonomicCoverage>
     </coverage>
@@ -72,8 +116,8 @@
         <postalCode>85354</postalCode>
         <country>Germany</country>
       </address>
-      <phone>0049-152-56391781</phone>
-      <electronicMailAddress>markusbauer@mailbox.org</electronicMailAddress>
+      <electronicMailAddress>markus1.bauer@tum.de</electronicMailAddress>
+      <onlineUrl>DOI address to the database</onlineUrl>
     </contact>
   </dataset>
 </eml:eml>

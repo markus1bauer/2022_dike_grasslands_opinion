@@ -23,7 +23,7 @@ setwd(here("data", "processed"))
 
 ### Load data ###
 sites <- read_csv("data_processed_sites.csv", col_names = TRUE,
-                  na = c("na", "NA"), col_types = 
+                  na = c("na", "NA"), col_types =
                     cols(
                       .default = "?",
                       id = "c",
@@ -38,7 +38,7 @@ sites <- read_csv("data_processed_sites.csv", col_names = TRUE,
                     )) %>%
   select(id, plot, block, speciesRichness, vegetationCov, surveyYearF,
          exposition, seedmixType, substrateType, botanistYear) %>%
-  mutate(vegetationCovScaled = scales::rescale(vegetationCov)) 
+  mutate(vegetationCovScaled = scales::rescale(vegetationCov))
 
 
 
@@ -51,16 +51,16 @@ sites <- read_csv("data_processed_sites.csv", col_names = TRUE,
 
 #### a Graphs -----------------------------------------------------------------
 #2way
-ggplot(sites, aes(x = vegetationCovScaled, y = speciesRichness)) + 
-  geom_point(aes(color = surveyYearF)) + 
+ggplot(sites, aes(x = vegetationCovScaled, y = speciesRichness)) +
+  geom_point(aes(color = surveyYearF)) +
   geom_smooth(aes(color = surveyYearF), method = "loess", se = TRUE) +
   geom_smooth(method = "loess", se = TRUE, color = "black")
 #3way
-ggplot(sites, aes(x = vegetationCovScaled, y = speciesRichness)) + 
-  geom_point(aes(color = surveyYearF),) + 
-  geom_smooth(aes(color = surveyYearF), 
-              method = "lm", se = F) +
-  geom_smooth(method = "loess", se = T,
+ggplot(sites, aes(x = vegetationCovScaled, y = speciesRichness)) +
+  geom_point(aes(color = surveyYearF)) +
+  geom_smooth(aes(color = surveyYearF),
+              method = "lm", se = FALSE) +
+  geom_smooth(method = "loess", se = TRUE,
               color = "black") +
   facet_wrap(~exposition)
 
@@ -102,7 +102,7 @@ VarCorr(m1b)
 m2 <- lmer(sqrt(speciesRichness) ~
              log(vegetationCovScaled + 1) * surveyYearF + exposition +
              seedmixType +
-             (1|substrateType) + (1|botanistYear) + (1|block/plot), 
+             (1|substrateType) + (1|botanistYear) + (1|block/plot),
            data = sites,
            REML = FALSE)
 simulateResiduals(m2, plot = TRUE)
@@ -111,8 +111,8 @@ sjPlot::plot_model(m2, type = "pred",
                    terms = c("vegetationCovScaled[all]", "surveyYearF"))
 m3 <- lmer(sqrt(speciesRichness) ~
              log(vegetationCovScaled + 1) * surveyYearF * exposition +
-             seedmixType + 
-             (1|substrateType) + (1|botanistYear) + (1|block/plot), 
+             seedmixType +
+             (1|substrateType) + (1|botanistYear) + (1|block/plot),
            data = sites,
            REML = FALSE)
 simulateResiduals(m3, plot = TRUE)
@@ -122,9 +122,9 @@ sjPlot::plot_model(m3, type = "pred",
                              "exposition"))
 m4 <- lmer(sqrt(speciesRichness) ~
              vegetationCovScaled +
-             (vegetationCovScaled + surveyYearF + exposition)^2 + 
+             (vegetationCovScaled + surveyYearF + exposition)^2 +
              seedmixType +
-             (1|substrateType) + (1|botanistYear) + (1|block/plot), 
+             (1|substrateType) + (1|botanistYear) + (1|block/plot),
            data = sites,
            REML = FALSE)
 simulateResiduals(m4, plot = TRUE)
@@ -134,7 +134,7 @@ sjPlot::plot_model(m4, type = "pred",
 m5 <- lmer(sqrt(speciesRichness) ~
              (I(vegetationCovScaled^2) + surveyYearF + exposition)^2 +
              seedmixType +
-             (1|substrateType) + (1|botanistYear) + (1|block/plot), 
+             (1|substrateType) + (1|botanistYear) + (1|block/plot),
            data = sites,
            REML = FALSE)
 simulateResiduals(m5, plot = TRUE)
@@ -143,9 +143,9 @@ sjPlot::plot_model(m5, type = "pred",
                    terms = c("vegetationCov[all]", "surveyYearF"))
 m6 <- lmer(sqrt(speciesRichness) ~
              vegetationCovScaled +
-             (log(vegetationCovScaled + 1) + surveyYearF + exposition)^2 + 
-             seedmixType + 
-             (1|substrateType) + (1|botanistYear) + (1|block/plot), 
+             (log(vegetationCovScaled + 1) + surveyYearF + exposition)^2 +
+             seedmixType +
+             (1|substrateType) + (1|botanistYear) + (1|block/plot),
            data = sites,
            REML = FALSE)
 simulateResiduals(m6, plot = TRUE)
@@ -154,9 +154,9 @@ sjPlot::plot_model(m6, type = "pred",
                    terms = c("vegetationCovScaled[all]", "surveyYearF"))
 m7 <- lmer(sqrt(speciesRichness) ~
              vegetationCovScaled +
-             (sqrt(vegetationCovScaled) + surveyYearF + exposition)^2 + 
-             seedmixType + 
-             (1|substrateType) + (1|botanistYear) + (1|block/plot), 
+             (sqrt(vegetationCovScaled) + surveyYearF + exposition)^2 +
+             seedmixType +
+             (1|substrateType) + (1|botanistYear) + (1|block/plot),
            data = sites,
            REML = FALSE)
 simulateResiduals(m7, plot = TRUE)
@@ -170,16 +170,16 @@ anova(m2, m3, m4, m5, m6, m7)
 rm(m1a, m1b, m2, m3, m4, m5)
 
 #### c model check ------------------------------------------------------------
-simulationOutput <- simulateResiduals(m6, plot = TRUE)
-testOutliers(simulationOutput)
-plotResiduals(simulationOutput$scaledResiduals, sites$vegetationCovScaled)
-plotResiduals(simulationOutput$scaledResiduals, sites$surveyYearF)
-plotResiduals(simulationOutput$scaledResiduals, sites$exposition)
-plotResiduals(simulationOutput$scaledResiduals, sites$seedmixType)
-plotResiduals(simulationOutput$scaledResiduals, sites$substrateType)
-plotResiduals(simulationOutput$scaledResiduals, sites$botanistYear)
-plotResiduals(simulationOutput$scaledResiduals, sites$block)
-plotResiduals(simulationOutput$scaledResiduals, sites$plot)
+simulation_output <- simulateResiduals(m6, plot = TRUE)
+testOutliers(simulation_output)
+plotResiduals(simulation_output$scaledResiduals, sites$vegetationCovScaled)
+plotResiduals(simulation_output$scaledResiduals, sites$surveyYearF)
+plotResiduals(simulation_output$scaledResiduals, sites$exposition)
+plotResiduals(simulation_output$scaledResiduals, sites$seedmixType)
+plotResiduals(simulation_output$scaledResiduals, sites$substrateType)
+plotResiduals(simulation_output$scaledResiduals, sites$botanistYear)
+plotResiduals(simulation_output$scaledResiduals, sites$block)
+plotResiduals(simulation_output$scaledResiduals, sites$plot)
 
 ## 3 Chosen model output ######################################################
 

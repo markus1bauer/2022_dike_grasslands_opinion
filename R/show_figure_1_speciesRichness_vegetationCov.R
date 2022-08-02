@@ -23,7 +23,7 @@ setwd(here("data", "processed"))
 
 ### Load data ###
 sites <- read_csv("data_processed_sites.csv", col_names = TRUE,
-                  na = c("na", "NA"), col_types = 
+                  na = c("na", "NA"), col_types =
                     cols(
                       .default = "?",
                       id = "c",
@@ -41,14 +41,14 @@ sites <- read_csv("data_processed_sites.csv", col_names = TRUE,
 ### Choosen model ###
 m6 <- lmer(sqrt(speciesRichness) ~
              vegetationCovScaled +
-             (log(vegetationCovScaled + 1) + surveyYearF + exposition)^2 + 
-             seedmixType + 
-             (1|substrateType) + (1|botanistYear) + (1|block/plot), 
+             (log(vegetationCovScaled + 1) + surveyYearF + exposition)^2 +
+             seedmixType +
+             (1|substrateType) + (1|botanistYear) + (1|block/plot),
            data = sites,
            REML = TRUE)
 
 ### Functions ###
-themeMB <- function() {
+theme_mb <- function() {
   theme(
     panel.background = element_rect(fill = "white"),
     text  = element_text(size = 10, color = "black"),
@@ -90,7 +90,7 @@ data <- sites %>%
     labs(x = "Vegetation cover",
          y = "Species richness [#]",
          linetype = "Year") +
-    themeMB())
+    theme_mb())
 
 ### Save ###
 ggsave(here("outputs", "figures",
