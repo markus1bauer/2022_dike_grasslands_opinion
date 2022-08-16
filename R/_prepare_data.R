@@ -25,12 +25,17 @@ setwd(here("data", "raw"))
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
-sites <- read_csv("data_raw_sites.csv", col_names = TRUE, na = c("na", "NA"),
+danube <- read_csv("data_raw_danube.csv", col_names = TRUE, na = c("na", "NA"),
                   col_types =
                     cols(
                       .default = "?"
                     ))
 
+inn <- read_csv("data_raw_inn.csv", col_names = TRUE, na = c("na", "NA"),
+                   col_types =
+                     cols(
+                       .default = "?"
+                     ))
 
 
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -38,10 +43,15 @@ sites <- read_csv("data_raw_sites.csv", col_names = TRUE, na = c("na", "NA"),
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
-sites <- sites %>%
+danube <- danube %>%
   mutate(surveyYearF = factor(surveyYear),
          botanist = str_replace_all(botanist, " ", "_"),
-         botanistYear = str_c(botanist, surveyYear))
+         botanistYear = str_c(botanist, surveyYear)) %>%
+  select(-plotSize, -exposition, -side)
+
+inn <- inn %>%
+  mutate(prop.flow.spec = numb.flow.spec / numb.spec * 100,
+         prop.flow.spec = round(prop.flow.spec, digits = 4))
 
 
 
@@ -50,4 +60,5 @@ sites <- sites %>%
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
-write_csv(sites, here("data", "processed", "data_processed_sites.csv"))
+write_csv(danube, here("data", "processed", "data_processed_danube.csv"))
+write_csv(inn, here("data", "processed", "data_processed_inn.csv"))

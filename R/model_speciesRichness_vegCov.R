@@ -1,5 +1,5 @@
 # Opinion paper: multifunctionality of dike grasslands
-# Model: species richness ~ vegetation cover ####
+# Model: Danube: species richness ~ vegetation cover ####
 # Markus Bauer
 # 2022-08-02
 
@@ -197,4 +197,4 @@ emmeans::emtrends(m6, pairwise ~ surveyYearF,
 ### Save ###
 table <- broom::tidy(car::Anova(m6, type = 3))
 write.csv(table, here("outputs", "statistics",
-                      "table_anova_speciesRichness_vegetationCov.csv"))
+                      "table_anova_to_figure_1.csv"))
