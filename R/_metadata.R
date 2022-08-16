@@ -108,9 +108,9 @@ coverage <- set_coverage(
     Subdivision = "Spermatophytina"
   )),
   geographicDescription = geographicDescription,
-  west = 12.87705, east = 12.89247,
-  north = 48.84055, south = 48.83830,
-  altitudeMin = 313, altitudeMaximum = 315,
+  west = 12.12565, east = 12.89247,
+  north = 48.84055, south = 47.80152,
+  altitudeMin = 313, altitudeMaximum = 453,
   altitudeUnits = "meter"
 )
 
@@ -173,5 +173,4 @@ eml <- list(
 write_eml(eml, here("METADATA.xml"))
 eml_validate(here("METADATA.xml"))
 
-render_eml(here("METADATA.xml"), open = TRUE,
-           outfile = "METADATA.html", publish_mode = FALSE)
+#render_eml(here("METADATA.xml"), open = TRUE, outfile = "METADATA.html", publish_mode = FALSE)

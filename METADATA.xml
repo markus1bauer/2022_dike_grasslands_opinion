@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<eml:eml xmlns:eml="https://eml.ecoinformatics.org/eml-2.2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:stmml="http://www.xml-cml.org/schema/stmml-1.2" packageId="eba097b7-8966-490f-8f75-a1d5e4ac3c64" system="uuid" xsi:schemaLocation="https://eml.ecoinformatics.org/eml-2.2.0 https://eml.ecoinformatics.org/eml-2.2.0/eml.xsd">
+<eml:eml xmlns:eml="https://eml.ecoinformatics.org/eml-2.2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:stmml="http://www.xml-cml.org/schema/stmml-1.2" packageId="71340d11-0025-4b0f-a27c-5b5998e0c0b9" system="uuid" xsi:schemaLocation="https://eml.ecoinformatics.org/eml-2.2.0 https://eml.ecoinformatics.org/eml-2.2.0/eml.xsd">
   <dataset>
     <title>Opinion paper: multifunctionality of dike grasslands</title>
     <creator id="https://orcid.org/0000-0001-5372-4174">
@@ -75,13 +75,13 @@
       <geographicCoverage>
         <geographicDescription>Danube dikes near Deggendorf</geographicDescription>
         <boundingCoordinates>
-          <westBoundingCoordinate>12.8771</westBoundingCoordinate>
+          <westBoundingCoordinate>12.1257</westBoundingCoordinate>
           <eastBoundingCoordinate>12.8925</eastBoundingCoordinate>
           <northBoundingCoordinate>48.8406</northBoundingCoordinate>
-          <southBoundingCoordinate>48.8383</southBoundingCoordinate>
+          <southBoundingCoordinate>47.8015</southBoundingCoordinate>
           <boundingAltitudes>
             <altitudeMinimum>313</altitudeMinimum>
-            <altitudeMaximum>315</altitudeMaximum>
+            <altitudeMaximum>453</altitudeMaximum>
             <altitudeUnits>meter</altitudeUnits>
           </boundingAltitudes>
         </boundingCoordinates>
