@@ -46,7 +46,7 @@ When using the __data available__ in this repository, please cite the original p
 
 **Publication**
 
-> Teixeira, LH, Bauer M, Moosner M, Kollmann J (2022). River dike grasslands can reconcile biodiversity and different ecosystem services to provide multifunctionality. - *Basic and Applied Ecology*. https://doi.org/10.1016/j.baae.2022.12.001
+> Teixeira, LH, Bauer M, Moosner M, Kollmann J (2022). River dike grasslands can reconcile biodiversity and different ecosystem services to provide multifunctionality. – *Basic and Applied Ecology*. https://doi.org/10.1016/j.baae.2022.12.001
 
 **Dataset**
 
