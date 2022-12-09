@@ -51,6 +51,6 @@ When using the __data available__ in this repository, please cite the original p
 
 **Dataset**
 
-> Teixeira, LH, Bauer M, Moosner M, Kollmann J (2022) Data and code for Teixeira, Bauer et al. (under review) (v1.0.0) [Data set]. &ndash; *Zenodo*. https://doi.org/10.5281/zenodo.6998447
+> Bauer M, Moosner M, Teixeira, LH, Kollmann J (2022) Data and code for Teixeira, Bauer et al. (under review) (v1.0.0) [Data set]. &ndash; *Zenodo*. https://doi.org/10.5281/zenodo.6998447
 
 Contact markus1.bauer@tum.de for any further information.
