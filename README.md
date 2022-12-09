@@ -4,7 +4,7 @@ _Leonardo H. Teixeira <a href="https://orcid.org/0000-0001-7443-087X"><img src="
 
 ***
 
-[![DOI:10.1016/j.baae.2022.12.001](https://doi.org/10.1016/j.baae.2022.12.001)
+[![DOI: 10.1016/j.baae.2022.12.001](https://doi.org/10.1016/j.baae.2022.12.001)]
 
 **Journal**: [Basic and Applied Ecology](https://www.sciencedirect.com/journal/basic-and-applied-ecology)
 
@@ -13,11 +13,11 @@ _Leonardo H. Teixeira <a href="https://orcid.org/0000-0001-7443-087X"><img src="
 ## Content of the repository
 
 1. __Data__: the folder `data` contains  
-    * The raw and processed data files of the Inn and Danube surveys (.csv)
+    * The `raw` and `processed` data files of the Inn and Danube surveys (.csv)
     
 2. __Outputs__: the folder `outputs` contains  
-    * The figures generated (.tiff)
-    * The statistics tables generated (.csv)
+    * The `figures` generated (.tiff)
+    * The `statistics` tables generated (.csv)
     
 3. __R__: the folder `R` contains
     * Scripts to prepare the data for analysis (.R)
