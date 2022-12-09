@@ -4,7 +4,7 @@ _Leonardo H. Teixeira <a href="https://orcid.org/0000-0001-7443-087X"><img src="
 
 ***
 
-[![DOI: 10.1016/j.baae.2022.12.001](https://doi.org/10.1016/j.baae.2022.12.001)]
+DOI: [10.1016/j.baae.2022.12.001](https://doi.org/10.1016/j.baae.2022.12.001)
 
 **Journal**: [Basic and Applied Ecology](https://www.sciencedirect.com/journal/basic-and-applied-ecology)
 
