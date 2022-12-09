@@ -4,24 +4,25 @@ _Leonardo H. Teixeira <a href="https://orcid.org/0000-0001-7443-087X"><img src="
 
 ***
 
-**Journal**: [XXX]
+DOI: [10.1016/j.baae.2022.12.001](https://doi.org/10.1016/j.baae.2022.12.001)
 
-[![DOI:10.XXX]
+**Journal**: [Basic and Applied Ecology](https://www.sciencedirect.com/journal/basic-and-applied-ecology)
 
 **Study region**: [S Germany](https://www.openstreetmap.org/#map=9/48.1844/12.5958)
 
 ## Content of the repository
 
 1. __Data__: the folder `data` contains  
-    * The raw and processed data files of the Inn and Danube surveys (.csv)
+    * The `raw` and `processed` data files of the Inn and Danube surveys (.csv)
     
-3. __Outputs__: the folder `outputs` contains  
-    * The figures (.tiff) generated.
-    * The statistics tables (.csv) generated.
-
+2. __Outputs__: the folder `outputs` contains  
+    * The `figures` generated (.tiff)
+    * The `statistics` tables generated (.csv)
     
-4. __R__: the folder `R` contains  
-    * Scripts (.R) for statistical analyses and to generate all figures used in the manuscript.
+3. __R__: the folder `R` contains
+    * Scripts to prepare the data for analysis (.R)
+    * Scripts for statistical analyses (.R)
+    * Scripts to generate all figures (.R)
 
 ***
 
@@ -41,14 +42,15 @@ This work is licensed under a
 [cc-by]: http://creativecommons.org/licenses/by/4.0/
 [cc-by-shield]: https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg
 
-When using the __data available__ in this repository, please cite the original publication:
+When using the __data available__ in this repository, please cite the original publication and the dataset:
 
 **Publication**
 
-> Teixeira, LH, Bauer M, Moosner M, Kollmann J (under review). River dike grasslands can reconcile different ecosystem services and provide high multifunctionality.
+> Teixeira, LH, Bauer M, Moosner M, Kollmann J (2022). River dike grasslands can reconcile biodiversity and different ecosystem services to provide multifunctionality. &ndash;
+ *Basic and Applied Ecology*. https://doi.org/10.1016/j.baae.2022.12.001
 
 **Dataset**
 
-> Bauer M, Moosner M (2022) Data and code for Teixeira, Bauer et al. (under review) (v1.0.0) [Data set]. – *Zenodo*. https://doi.org/10.5281/zenodo.6998448 
+> Teixeira, LH, Bauer M, Moosner M, Kollmann J (2022) Data and code for Teixeira, Bauer et al. (under review) (v1.0.0) [Data set]. &ndash; *Zenodo*. https://doi.org/10.5281/zenodo.6998447
 
 Contact markus1.bauer@tum.de for any further information.
