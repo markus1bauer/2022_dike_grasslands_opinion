@@ -16,3 +16,5 @@ botanist,botanist of the vegetation survey,NA,botanist of the vegetation survey,
 accumulatedCov,sumed covergage of all individual cover estimations of the species,NA,NA,percent,real,numeric,NA
 speciesRichness,number of species per plot,NA,NA,dimensionless,integer,numeric,NA
 shannon,Shannon diversity index,NA,NA,dimensionless,real,numeric,NA
+latitude,Coordinates Y of site (EPSG: 4326 / WGS84),NA,NA,degree,real,numeric,NA
+longitude,Coordinates X of site (EPSG: 4326 / WGS84),NA,NA,degree,real,numeric,NA
