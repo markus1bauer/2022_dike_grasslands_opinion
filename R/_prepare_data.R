@@ -14,7 +14,6 @@ library(tidyverse)
 #checklist::setup_source(here())
 #checklist::check_source(here())
 renv::status()
-#renv::snapshot()
 rm(list = ls())
 setwd(here("data", "raw"))
 
@@ -26,16 +25,11 @@ setwd(here("data", "raw"))
 
 
 danube <- read_csv("data_raw_danube.csv", col_names = TRUE, na = c("na", "NA"),
-                  col_types =
-                    cols(
-                      .default = "?"
-                    ))
+                  col_types = cols(.default = "?"))
 
 inn <- read_csv("data_raw_inn.csv", col_names = TRUE, na = c("na", "NA"),
-                   col_types =
-                     cols(
-                       .default = "?"
-                     ))
+                   col_types = cols(.default = "?"))
+
 
 
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
