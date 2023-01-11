@@ -6,7 +6,7 @@ Markus Bauer <a href="https://orcid.org/0000-0001-5372-4174"><img src="https://i
 
 **Journal**: [Basic and Applied Ecology](https://www.sciencedirect.com/journal/basic-and-applied-ecology)
 
-[![DOI:10.1016/j.baae.2022.12.001](http://img.shields.io/badge/DOI-10.14471/2018.38.006-informational.svg)](https://doi.org/10.1016/j.baae.2022.12.001)
+[![DOI:10.1016/j.baae.2022.12.001](http://img.shields.io/badge/DOI-10.1016/j.baae.2022.12.001-informational.svg)](https://doi.org/10.1016/j.baae.2022.12.001)
 
 **Study region**: [S Germany](https://www.openstreetmap.org/#map=9/48.1844/12.5958)
 
