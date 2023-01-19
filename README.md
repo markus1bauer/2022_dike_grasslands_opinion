@@ -2,15 +2,14 @@
 
 Markus Bauer <a href="https://orcid.org/0000-0001-5372-4174"><img src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_16x16.png" width="16" height = "16"></a>, _Leonardo H. Teixeira <a href="https://orcid.org/0000-0001-7443-087X"><img src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_16x16.png" width="16" height = "16"></a>, Michaela Moosner <a href="https://orcid.org/0000-0002-7340-9363"><img src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_16x16.png" width="16" height = "16"></a> and Johannes Kollmann <a href="https://orcid.org/0000-0002-4990-3636"><img src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_16x16.png" width="16" height = "16"></a>_  
 
-***
-
 **Journal**: [Basic and Applied Ecology](https://www.sciencedirect.com/journal/basic-and-applied-ecology)
 
 [![DOI:10.1016/j.baae.2022.12.001](http://img.shields.io/badge/DOI-10.1016/j.baae.2022.12.001-informational.svg)](https://doi.org/10.1016/j.baae.2022.12.001)
 [![CC BY 4.0][cc-by-shield]][cc-by]
 
 **Study region**: [S Germany](https://www.openstreetmap.org/#map=9/48.1844/12.5958)
-
+<br>
+<br>
 ## Content of the repository
 
 1. __Data__: the folder `data` contains  
@@ -27,13 +26,15 @@ Markus Bauer <a href="https://orcid.org/0000-0001-5372-4174"><img src="https://i
 
 ***
 
-__Package versioning__
+### Package versioning
 
 The used versions of R and the packages are saved in `2022_dike_grasslands_opinion/renv.lock`.
 
 You can restore this state by executing `renv::restore()` in the console.
 
-***
+
+
+## Citation
 
 [![CC BY 4.0][cc-by-shield]][cc-by]
 
