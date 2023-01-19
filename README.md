@@ -1,8 +1,8 @@
-# Data and code for "River dike grasslands can reconcile different ecosystem services and provide high multifunctionality"
+# Data and code for Teixeira, Bauer et al. (2023) Basic Appl Ecol
 
 Markus Bauer <a href="https://orcid.org/0000-0001-5372-4174"><img src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_16x16.png" width="16" height = "16"></a>, _Leonardo H. Teixeira <a href="https://orcid.org/0000-0001-7443-087X"><img src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_16x16.png" width="16" height = "16"></a>, Michaela Moosner <a href="https://orcid.org/0000-0002-7340-9363"><img src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_16x16.png" width="16" height = "16"></a> and Johannes Kollmann <a href="https://orcid.org/0000-0002-4990-3636"><img src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_16x16.png" width="16" height = "16"></a>_  
 
-**Journal**: [Basic and Applied Ecology](https://www.sciencedirect.com/journal/basic-and-applied-ecology)
+Teixeira L, Bauer M, Moosner M, Kollmann J (2023) River dike grasslands can reconcile different ecosystem services and provide high multifunctionality. &ndash; _Basic and Applied Ecology_ 66, 22&ndash;30.
 
 [![DOI:10.1016/j.baae.2022.12.001](http://img.shields.io/badge/DOI-10.1016/j.baae.2022.12.001-informational.svg)](https://doi.org/10.1016/j.baae.2022.12.001)
 [![CC BY 4.0][cc-by-shield]][cc-by]
